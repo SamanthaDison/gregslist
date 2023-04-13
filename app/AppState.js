@@ -13,7 +13,7 @@ class AppState extends EventEmitter {
     new Car({
       make: 'Toyota',
       model: 'Camry',
-      img: 'https://images.unsplash.com/photo-1588440983028-d53e24fa96cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKhU86FK-V8ZtC4FAErsxRsQn9buejSzkraBFb8aMcWZ5jdK2ETSGQctK4gVTFR5XnEOQ&usqp=CAU',
       year: 1993,
       price: 1000,
       description: "ole' reliable",
@@ -47,6 +47,9 @@ class AppState extends EventEmitter {
       color: '#921937'
     }),
   ]
+
+  /** @type {import('./Models/Car').Car|null} */
+  car = null
 
 }
 
