@@ -51,6 +51,9 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Car').Car|null} */
   car = null
 
+  //  REVIEW do we do just a string here? or should we have an entire object and name is a property?
+  user = ''
+
 }
 
 export const appState = new Proxy(new AppState(), {

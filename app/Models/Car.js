@@ -1,7 +1,7 @@
 import { generateId } from "../Utils/generateId.js"
 
 export class Car {
-    constructor (data) {
+    constructor(data) {
         this.id = data.id || generateId()
         this.make = data.make
         this.model = data.model
@@ -10,6 +10,8 @@ export class Car {
         this.price = data.price
         this.description = data.description
         this.color = data.color
+        // REVIEW potentially do an entire object?
+        this.creatorName = data.creatorName
     }
 
 
