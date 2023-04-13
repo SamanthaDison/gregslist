@@ -25,8 +25,17 @@
       </a>
     </nav>
   </header>
+
   <main>
     <div class="container-fluid">
+      <section class="row mt-2">
+        <div class="col-12 p-3">
+          <button class="btn btn-success" data-bs-target="#modal" data-bs-toggle="modal"
+            onclick="app.carsController.setCarForm()">
+            Create Car <i class="mdi mdi-car-convertible"></i>
+          </button>
+        </div>
+      </section>
       <section class="row p-3" id="cars">
         <!-- STUB car template -->
         <!-- <div class="col-12 col-md-4">
@@ -44,15 +53,61 @@
       </section>
     </div>
   </main>
+
   <footer class="bg-dark text-light">
     <div class="text-center no-select">
       <p><small>Made with 💖 by CodeWorks</small></p>
     </div>
   </footer>
 
-  <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-      <div class="modal-content" id="active">
+      <div class="modal-content" id="modalGuts">
+        <!-- STUB Car Form -->
+        <!-- <form onsubmit="app.carsController.create()">
+          <div class="modal-body">
+            <div class="row">
+              <div class="mb-2 col-4">
+                <label for="make">Make</label>
+                <input type="text" name="make" id="make" class="form-control">
+              </div>
+              <div class="mb-2 col-4">
+                <label for="model">Model</label>
+                <input type="text" name="model" id="model" class="form-control" required minlength="3" maxlength="10"
+                  placeholder="Toyota">
+              </div>
+              <div class="mb-2 col-4">
+                <label for="year">Year</label>
+                <input type="number" name="year" id="year" class="form-control" required min="2020" max="3000"
+                  value="2023">
+              </div>
+              <div class="mb-2 col-12">
+                <label for="img">Image URL</label>
+                <input type="url" name="img" id="img" class="form-control" required
+                  placeholder="please enter a url for an image...">
+              </div>
+              <div class="mb-2 col-12">
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" class="form-control" maxlength="50">
+              </div>
+              <div class="mb-2 col-6">
+                <label for="color">Color</label>
+                <input type="color" name="color" id="color" class="form-control" required value="#4747ff">
+              </div>
+              <div class="mb-2 col-6">
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" class="form-control" required min="1">
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Create Car</button>
+          </div>
+        </form> -->
+
+
         <!-- STUB active template -->
         <!-- <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Car Name</h1>

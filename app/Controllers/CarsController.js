@@ -1,5 +1,7 @@
 import { appState } from "../AppState.js";
+import { Car } from "../Models/Car.js";
 import { carsService } from "../Services/CarsService.js";
+import { getFormData } from "../Utils/FormHandler.js";
 import { setHTML } from "../Utils/Writer.js";
 
 function _drawCars() {
@@ -11,18 +13,32 @@ function _drawCars() {
 
 function _drawActive() {
     let car = appState.car
-    setHTML('active', car.ActiveTemplate)
+    setHTML('modalGuts', car.ActiveTemplate)
 }
 
 export class CarsController {
-    constructor() {
+    constructor () {
         _drawCars()
         appState.on('car', _drawActive)
     }
 
-
     setActive(carId) {
         carsService.setActive(carId)
+    }
+
+    setCarForm() {
+        setHTML('modalGuts', Car.CarForm())
+    }
+
+    create() {
+        window.event.preventDefault()
+        const form = window.event.target
+        const formData = getFormData(form)
+        carsService.create(formData)
+        // @ts-ignore
+        form.reset()
+        // @ts-ignore
+        bootstrap.Modal.getOrCreateInstance('#modal').hide()
     }
 
 }
