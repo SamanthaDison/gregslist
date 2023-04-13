@@ -8,4 +8,8 @@ export class Car {
         this.description = data.description
         this.color = data.color
     }
+
+
+    get CardTemplate
+
 }
