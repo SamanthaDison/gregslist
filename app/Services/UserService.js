@@ -1,6 +1,9 @@
 import { appState } from "../AppState.js"
 
 class UserService {
+    logout() {
+        appState.user = ''
+    }
     login(input) {
         appState.user = input
     }

@@ -16,6 +16,7 @@ class AppState extends EventEmitter {
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKhU86FK-V8ZtC4FAErsxRsQn9buejSzkraBFb8aMcWZ5jdK2ETSGQctK4gVTFR5XnEOQ&usqp=CAU',
       year: 1993,
       price: 1000,
+      creatorName: 'Sam',
       description: "ole' reliable",
       color: '#45e7f0'
     }),

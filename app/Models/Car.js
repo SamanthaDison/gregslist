@@ -1,22 +1,23 @@
+import { appState } from "../AppState.js"
 import { generateId } from "../Utils/generateId.js"
 
 export class Car {
-    constructor(data) {
-        this.id = data.id || generateId()
-        this.make = data.make
-        this.model = data.model
-        this.img = data.img
-        this.year = data.year
-        this.price = data.price
-        this.description = data.description
-        this.color = data.color
-        // REVIEW potentially do an entire object?
-        this.creatorName = data.creatorName
-    }
+  constructor (data) {
+    this.id = data.id || generateId()
+    this.make = data.make
+    this.model = data.model
+    this.img = data.img
+    this.year = data.year
+    this.price = data.price
+    this.description = data.description
+    this.color = data.color
+    // REVIEW potentially do an entire object?
+    this.creatorName = data.creatorName || 'BIG JERMS'
+  }
 
 
-    get CardTemplate() {
-        return `
+  get CardTemplate() {
+    return `
           <div class="col-12 col-md-4 my-3">
           <div class="rounded elevation-5 selectable" data-bs-toggle="modal" data-bs-target="#modal" onclick="app.carsController.setActive('${this.id}')">
             <img class="rounded-top car-img"
@@ -28,11 +29,11 @@ export class Car {
             </div>
           </div>
         </div>`
-    }
+  }
 
 
-    get ActiveTemplate() {
-        return `
+  get ActiveTemplate() {
+    return `
             <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">${this.make + ' ' + this.model}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -43,6 +44,7 @@ export class Car {
               <img class="img-fluid" src="${this.img}" alt="${this.make + ' ' + this.model}">
             </div>
             <div class="col-12 col-md-6">
+              <p>Current owner: ${this.creatorName}</p>
               <p >${this.description}</p>
               <div class="d-flex justify-content-around">
                 <p>$${this.price}</p>
@@ -53,12 +55,20 @@ export class Car {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          ${this.ComputeDeleteButton}
         </div>`
-    }
+  }
 
-    static CarForm() {
-        return `
-        <form onsubmit="app.carsController.create()">
+  get ComputeDeleteButton() {
+    if (appState.user == this.creatorName) {
+      return `<button type="button" onclick="app.carsController.delete('${this.id}')" class="btn btn-danger">Delete Car</button>`
+    }
+    return ''
+  }
+
+  static CarForm() {
+    return `
+      <form onsubmit="app.carsController.create()">
         <div class="modal-body">
           <div class="row">
             <div class="mb-2 col-4">
@@ -101,6 +111,17 @@ export class Car {
         </div>
       </form>
         `
-    }
+  }
+
+  static CreateCarButton() {
+    return `
+      <div class="col-12 p-3">
+        <button ${appState.user ? '' : 'disabled'} class="btn btn-success" data-bs-target="#modal" data-bs-toggle="modal"
+          onclick="app.carsController.setCarForm()">
+          Create Car <i class="mdi mdi-car-convertible"></i>
+        </button>
+      </div>
+      `
+  }
 
 }

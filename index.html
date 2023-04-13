@@ -17,13 +17,18 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select">
+    <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select justify-content-between">
       <a class="navbar-brand ms-3" href="#">
         <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
           loading="lazy">
         <span class="ms-2">gregslist</span>
       </a>
-      <div id="login">
+      <div class="d-flex">
+        <button class="btn btn-success" onclick="app.carsController.drawCars()">Cars</button>
+        <button class="btn btn-success mx-3">Houses</button>
+        <button class="btn btn-success">Jobs</button>
+      </div>
+      <div id="login" class="d-flex align-items-center me-3">
         <!-- REVIEW user controller or account controller? -->
         <button class="btn btn-info" onclick="app.userController.login()">
           Login
@@ -34,15 +39,16 @@
 
   <main>
     <div class="container-fluid">
-      <section class="row mt-2">
-        <div class="col-12 p-3">
+      <section class="row mt-2" id="createListing">
+        <!-- STUB create car button -->
+        <!-- <div class="col-12 p-3">
           <button class="btn btn-success" data-bs-target="#modal" data-bs-toggle="modal"
             onclick="app.carsController.setCarForm()">
             Create Car <i class="mdi mdi-car-convertible"></i>
           </button>
-        </div>
+        </div> -->
       </section>
-      <section class="row p-3" id="cars">
+      <section class="row p-3" id="listings">
         <!-- STUB car template -->
         <!-- <div class="col-12 col-md-4">
           <div class="rounded elevation-5">

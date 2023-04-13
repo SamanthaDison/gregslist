@@ -5,12 +5,18 @@ import { setHTML } from "../Utils/Writer.js";
 
 function _drawUser() {
     let user = appState.user
-    if (!user) return
-    setHTML('login', `Welcome ${}`)
+    if (!user) {
+        setHTML('login', '<button class="btn btn-info" onclick="app.userController.login()">Login</button>')
+        document.getElementById('createListing').querySelector('button').disabled = true
+    }
+    else {
+        setHTML('login', `<h1>Welcome ${user}</h1> <button onclick="app.userController.logout()" class="btn btn-danger ms-3">Logout</button>`)
+        document.getElementById('createListing').querySelector('button').disabled = false
+    }
 }
 
 export class UserController {
-    constructor() {
+    constructor () {
         appState.on('user', _drawUser)
     }
 
@@ -24,5 +30,11 @@ export class UserController {
         userService.login(input)
     }
 
+    async logout() {
+        const userWantsToLogOut = await Pop.confirm('Log out?', '')
 
+        if (userWantsToLogOut) {
+            userService.logout()
+        }
+    }
 }
